@@ -5,6 +5,12 @@ name = "pypi"
 
 [packages]
 jupyterlab = "*"
+langchain-community = "*"
+requests = "*"
+pandas = "*"
+ipykernel = "*"
+langchain = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
