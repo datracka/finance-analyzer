@@ -1,5 +1,0 @@
-"Date","Payee","Account number","Transaction type","Payment reference","Amount (EUR)","Amount (Foreign Currency)","Type Foreign Currency","Exchange Rate"
-"2024-02-01","Vicente Fayos Alonso","BE28967023363020","Income","VICENTE FAYOS ALONSO","700.0","","",""
-"2024-02-05","Vicente Fayos Alonso","ES7214650150521718208518","Outgoing Transfer","","-700.0","","",""
-"2024-02-20","Telefonica Germany G","DE81700202700005714893","Direct Debit","Gebuehr fuer Blau Allnet S 2021 fuer Ihr Prepaid-Konto 4917688493350-8445. BLAU.DE SAGT DANKE","-7.99","","",""
-"2024-02-27","LOOPMASTERS LIMITED","","MasterCard Payment","-","-6.99","-6.99","EUR","1.0"
