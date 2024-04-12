@@ -6,6 +6,8 @@ to start the virtual environment
 
 Virtual environment is managed previouly by pyenv https://realpython.com/intro-to-pyenv/
 
+Folder `csv` with dataset is ignored by now.
+
 ## Create modelfile
 
 ollama create finance_analyzer_llama2 -f ./finance_analyer.txt
