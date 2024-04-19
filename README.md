@@ -17,13 +17,17 @@ ollama run finance_analyzer_llama2
 
 > pipenv install <whatever>
 
-## next steps
+## TODO
 
-- [x] You need to create your own dataset: https://huggingface.co/learn/nlp-course/chapter5/5
+- x] You need to create your own dataset Check Final Version from-chat-gpt.py
+  - [x] Create Dataset
+  - [x] Check if DataSet is balanced
+  - [x] Create category labels
+- [x] Model Created
+- [-] Model tested
 
-- [ ] use it to train https://huggingface.co/docs/transformers/training
+ERROR: There is an error when running predictor.py with a sample statement to test
 
-- Pending, to choose the proper Pretrained model maybe this https://huggingface.co/MoritzLaurer/mDeBERTa-v3-base-mnli-xnli?
-  
-- Understand, how they connect to my local model Ollama.
+-[ ] Learn everything about fintuning a model and do a hello world test read: https://huggingface.co/learn
 
+I am here https://huggingface.co/learn/nlp-course/chapter1/3?fw=pt

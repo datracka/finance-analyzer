@@ -12,6 +12,9 @@ ipykernel = "*"
 langchain = "*"
 python-dotenv = "*"
 datasets = "*"
+transformers = "*"
+torch = "*"
+accelerate = "*"
 
 [dev-packages]
 
