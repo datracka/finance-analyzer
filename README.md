@@ -28,7 +28,7 @@ ollama run finance_analyzer_llama2
 
 ## TODO
 
-- x] You need to create your own dataset Check Final Version from-chat-gpt.py
+- [x] You need to create your own dataset Check Final Version from-chat-gpt.py
   - [x] Create Dataset
   - [x] Check if DataSet is balanced
   - [x] Create category labels
@@ -47,3 +47,11 @@ IndexError: index out of range in self
 -[ ] Learn everything about fintuning a model and do a hello world test read: https://huggingface.co/learn
 
 I am here https://huggingface.co/learn/nlp-course/chapter1/3?fw=pt
+
+- [ ] Optional DeepLearning in https://course.fast.ai/ or https://www.deeplearning.ai/
+- [x] Transformer models
+  - [x] learn NPL https://huggingface.co/learn/nlp-course/chapter1/1
+- [x] Using Transformers
+  - [ ] https://huggingface.co/learn/nlp-course/chapter2/2?fw=pt
+- [ ] Fine Tuning a pretrained model
+  - [ ] https://huggingface.co/learn/nlp-course/chapter3/1?fw=pt
