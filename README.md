@@ -43,15 +43,15 @@ ERROR: There is an error when running predictor.py with a sample statement to te
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 IndexError: index out of range in self
 ```
+TODOs
 
--[ ] Learn everything about fintuning a model and do a hello world test read: https://huggingface.co/learn
-
-I am here https://huggingface.co/learn/nlp-course/chapter1/3?fw=pt
-
-- [ ] Optional DeepLearning in https://course.fast.ai/ or https://www.deeplearning.ai/
-- [x] Transformer models
-  - [x] learn NPL https://huggingface.co/learn/nlp-course/chapter1/1
-- [x] Using Transformers
-  - [ ] https://huggingface.co/learn/nlp-course/chapter2/2?fw=pt
-- [ ] Fine Tuning a pretrained model
-  - [ ] https://huggingface.co/learn/nlp-course/chapter3/1?fw=pt
+* [ ] (Optional) DeepLearning in https://course.fast.ai/ or https://www.deeplearning.ai/
+* [x] Transformer models
+  * [x] learn NPL https://huggingface.co/learn/nlp-course/chapter1/1
+* [x] Using Transformers
+  * [x] https://huggingface.co/learn/nlp-course/chapter2/2?fw=pt
+* [-] Fine Tuning a pretrained model https://huggingface.co/learn/nlp-course/chapter3/2?fw=pt
+  * [ ] DataSet labels are wrong https://docs.google.com/spreadsheets/d/16cdQz4u2L-ZUzBUueqNFgfrdi5KCkGqli16jUEg2WHI/edit?usp=sharing
+  * [ ] Create DataSet ClassLabels (ClassLabel(num_classes=2, names) from the values I have as labels Value(dtype='int64', id=None) using `trainer-test.py`
+  * [ ] https://huggingface.co/learn/nlp-course/chapter3/1?fw=pt
+* [ ] Learn how to use using Hugging face for loading a ollama model and learn about GGUF format 
