@@ -16,9 +16,13 @@ Folder `csv` with dataset is ignored by now.
 
 ## Train a model
 
+Currently last version of code is stores in trainer-2
+
 * `python trainer` to tune a pretrained model. Pretrained model is `bert-base-multilingual-uncased`
   * created model store in `/model` folder (gitignored)
 * `python predictor`  and `python pipeline` to test model works
+
+Also you have `trainer_static_padding.py` that is incompleted and not working.
   
 ## to install package
 
