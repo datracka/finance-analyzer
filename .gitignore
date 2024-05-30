@@ -1,7 +1,9 @@
 .env
 .ipynb_checkpoints
 .DS_Store
+.vscode/
 
 csv
 model_bert_uncase_english
 model
+models_created
