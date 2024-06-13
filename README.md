@@ -39,3 +39,6 @@ ollama run finance_analyzer_llama2
 * [ ] Learn how to use using Hugging face for loading a ollama model and learn about GGUF format
 * [ ] improve accuracy of the model
 * [ ] deploy it
+* [ ] Improve accuracy 
+  * [x] Simplify the dataset.
+  * [ ] https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne

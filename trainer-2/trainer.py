@@ -3,41 +3,56 @@ from datasets import Dataset, DatasetDict, ClassLabel, Value, Features
 from transformers import AutoTokenizer, DataCollatorWithPadding, TrainingArguments, Trainer, AutoModelForSequenceClassification
 import numpy as np
 import evaluate
-import torch
-
 
 def tokenize_function(dataset):
     return tokenizer(dataset["statement"], truncation=True, padding=True)
 
+def compute_metrics(eval_pred):
+    logits, labels = eval_pred
+    predictions = np.argmax(logits, axis=-1)
+    metric = evaluate.load("accuracy")
+    return metric.compute(predictions=predictions, references=labels)
+
+
+## configuration
+
+csv_file="csv/bank_statements_ing_subset.csv"
+checkpoint = "PlanTL-GOB-ES/roberta-base-bne"
+output_folder="finance-trainer_oberta-base-bne"
+
+# Map categories to integers
+num_categories=8
+category_mapping = {
+    'Ocio y restauracion': 0, 'Alimentacion': 1, 'Compras': 2, 'Reintegros': 3,  # Add more categories as needed
+    'Suscripciones': 4, 'ONGs': 5, 'Tasas, comisiones e impuestos': 6, 'Descartado': 7
+}
+
+#    'Vehiculo y transporte': 8, 'Alquiler': 9, 'Company': 10, 'Limpieza & Babysitter': 11,
+#    'Pisos / Inversiones': 12, 'Ingresos': 13, 'Educacion': 14,
+#    'Luz & Electricidad & Basuras': 15, 'Seguros & medicos': 16
+
+## end configuration
+
+
+
 ## Prepare dataset from CSV https://huggingface.co/learn/nlp-course/chapter3/2?fw=pt
 
 # Read data from CSV
-data = pd.read_csv("csv/bank_statements_ing.csv")
-
-# Map categories to integers
-category_mapping = {
-    'Ocio y restauracion': 0, 'Alimentacion': 1, 'Compras': 2, 'Reintegros': 3,  # Add more categories as needed
-    'Seguros & medicos': 4, 'Ingresos': 5, 'Suscripciones': 6, 'Descartado': 7,
-    'Vehiculo y transporte': 8, 'Alquiler': 9, 'Company': 10, 'Limpieza & Babysitter': 11,
-    'Pisos / Inversiones': 12, 'ONGs': 13, 'Educacion': 14,
-    'Luz & Electricidad & Basuras': 15, 'Tasas, comisiones e impuestos': 16
-}
+data = pd.read_csv(csv_file)
 
 data['amount'] = data['amount'].replace(',', '', regex=True).astype(float)
 
 # check if there are any categories that are not in the mapping
 # print(data[~data['category'].isin(category_mapping.keys())])
 
-
 data['label'] = data['category'].map(category_mapping).astype(int)
-
 
 # Optionally drop unwanted columns
 data = data.drop(['date', 'category', 'amount'], axis=1)
 
 features = Features({
     'idx': Value(dtype='int32'),
-    'label': ClassLabel(num_classes=17, names=list(category_mapping.keys())),
+    'label': ClassLabel(num_classes=num_categories, names=list(category_mapping.keys())),
     'statement': Value(dtype='string'),
 })
 
@@ -53,7 +68,6 @@ dataset_dict = DatasetDict({
     'test': dataset_validation_test['test']
 })
 
-checkpoint = "google-bert/bert-base-cased"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 
 # tokenize the dataset
@@ -74,17 +88,11 @@ samples = {k: v for k, v in samples.items() if k not in ["idx", "statement"]}
 
 ## Model Fine Tunning https://huggingface.co/docs/transformers/training
 
-output_folder = "finance_trainer"
-
 small_train_dataset = tokenized_datasets["train"].shuffle(seed=42)
 small_eval_dataset = tokenized_datasets["test"].shuffle(seed=42)
 
-def compute_metrics(eval_pred):
-    logits, labels = eval_pred
-    predictions = np.argmax(logits, axis=-1)
-    return metric.compute(predictions=predictions, references=labels)
 
-model = AutoModelForSequenceClassification.from_pretrained("google-bert/bert-base-cased", num_labels=17)
+model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=num_categories)
 
 training_args = TrainingArguments(
     output_dir=output_folder, 
@@ -92,7 +100,7 @@ training_args = TrainingArguments(
     per_device_train_batch_size=8,  # You might want to explicitly define batch sizes
     per_device_eval_batch_size=8)
 
-metric = evaluate.load("accuracy")
+
 
 trainer = Trainer(
     model=model,

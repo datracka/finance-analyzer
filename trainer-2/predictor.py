@@ -41,15 +41,19 @@ def predict_texts(model_path, texts):
 
 # Example usage
 texts = [
-"Pago en PAYPAL *friedemann.str 35314369001 ES",
-"Pago en MARMARIS Restaurant AMSTERDAM ZUINL",
-"Pago en ALBERT HEIJN 2236",
-"Pago en TAXI JAPPIE",
-"Recibo ENDESA X SERVICIOS S.L.",
-"Transferencia internacional emitida Taschengeld",
-"Pago en AREAS LOIU ES",
-"Pago en BILBBO INTERMODAL BILBAO ES",
+"Pago en LA FLECA BARCELONA ES",
+"Pago en VIVARI BARCELONA ES",
+"Pago en DECO HOME MERIDIANA BARCELONA ES",
+"Reintegro efectivo tarjeta CASHZONE BARCELONA ES",
+"Pago en COM.MEN.FRUTAS VERDURAS BARCELONA ES",
+"Pago en CONDIS SARDENYA 45 BARCELONA ES",
+"Pago en CARROT CAFE S.L. BARCELONA ES",
+"Pago en WOMEN SECRET BARCELONA ES",
+"Pago en CAPRABO 7771 CRTA ANTIGUABARCELONA ES",
+"Pago en CHENPAN BARCELONA ES",
+"Traspaso interno recibido",
+"Pago en CONDIS SARDENYA 45 BARCELONA ES",
 ]
-predictions = predict_texts("./models_created/finance_trainer", texts)
+predictions = predict_texts("./models_created/finance-trainer_oberta-base-bne", texts)
 
 print(predictions)

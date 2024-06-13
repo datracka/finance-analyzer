@@ -22,6 +22,9 @@ from predictions.
 from datasets import Dataset, DatasetDict
 import pandas as pd
 
+from transformers import AutoTokenizer
+from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer
+
 # Load your CSV
 df = pd.read_csv('csv/bank_statements.csv')
 
@@ -38,7 +41,7 @@ dataset_dict = DatasetDict({
 })
 
 # Processing function to tokenize text
-from transformers import AutoTokenizer
+
 
 tokenizer = AutoTokenizer.from_pretrained('bert-base-multilingual-uncased', use_fast=True)
 tokenizer.save_pretrained('./model')
@@ -53,9 +56,6 @@ def tokenize_function(examples):
 # Apply tokenization
 tokenized_datasets = dataset_dict.map(tokenize_function, batched=True)
 
-# Model Fine Tunning
-
-from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer
 
 model = AutoModelForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=df['Label'].nunique())
 
